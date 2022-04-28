@@ -4,11 +4,11 @@
 <header th:replace="~{cabecalho :: head('Login')}"></header>
 <body>
 	<nav th:replace="~{menu :: nav}"></nav>
-	<h3>Login</h3>
+	<h3 class="text-center mt-3">Login</h3>
 	
 	<div class="container mt-3">
 		<form th:object="${userDto}" action="/login" method="POST">
-			<div class="row">
+<div class="col d-flex justify-content-around">
 				<div class="col-md-6">
 					<div class="input-group mb-3 input-group-sm">
 						<span class="input-group-text">Username</span> <input
@@ -24,7 +24,9 @@
 					</div>
 				</div>
 			</div>
-			<input class="btn btn-success" type="submit" value="Salvar" />
+			<div class="col d-flex justify-content-around">
+				<input class="btn btn-success" type="submit" value="Entrar" />
+			</div>
 		</form>
 	</div>
 </body>
