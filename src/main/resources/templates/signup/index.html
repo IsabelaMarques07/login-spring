@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<header th:replace="~{cabecalho :: head('Cadastro')}"></header>
+<body>
+	<nav th:replace="~{menu :: nav}"></nav>
+	<h3>Cadastro de usuário</h3>
+	
+	<div class="container mt-3">
+		<form th:object="${userDto}" action="/signup" method="POST">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="input-group mb-3 input-group-sm">
+						<span class="input-group-text">Username</span> <input
+							th:errorclass="is-invalid" type="text" th:field="*{username}"
+							class="form-control">
+						<div class="invalid-feedback" th:errors="*{username}"></div>
+					</div>
+					<div class="input-group mb-3 input-group-sm">
+						<span class="input-group-text">Password</span> <input
+							th:errorclass="is-invalid" type="text" th:field="*{password}"
+							class="form-control">
+						<div class="invalid-feedback" th:errors="*{password}"></div>
+					</div>
+				</div>
+			</div>
+			<input class="btn btn-success" type="submit" value="Salvar" />
+		</form>
+	</div>
+</body>
+</html>
