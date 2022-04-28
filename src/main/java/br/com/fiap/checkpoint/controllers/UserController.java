@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,10 +41,12 @@ public class UserController {
 		
 		if(userLogin == null) {
 			System.out.println("Usuário não existe!!!");
-			return new ModelAndView("redirect:/login");
+			bindingResult.rejectValue("username", "error.user", "Usuário não existe");
+			return new ModelAndView("login/index");
 		}else {
 			if(user.getPassword().compareTo(userLogin.getPassword()) != 0) {
-				return new ModelAndView("redirect:/login");
+				bindingResult.rejectValue("password", "error.user", "Senha incorreta");
+				return new ModelAndView("login/index");
 			}else {
 				return new ModelAndView("redirect:/home");
 			}
